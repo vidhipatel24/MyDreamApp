@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags for character set and viewport settings -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Page title -->
+  <title>Dream Nursery - Plant Identifier</title>
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header section with logo and title -->
+    <header>
+      <div class="logo">
+        <!-- Logo image and site title -->
+        <img src="dreamlogo.png" alt="Dream Nursery Logo">
+        <h1>Dream Nursery</h1>
+        <p>Your Guide to Happy Plants</p>
+      </div>
+    </header>
+    <!-- Section for capturing images using the camera -->
+    <div class="image-capture">
+      <div class="video-container">
+        <!-- Video element for capturing plant images -->
+        <video id="video" width="320" height="240" autoplay></video>
+      </div>
+      <!-- Button to capture image from video -->
+      <button id="capture-button" class="capture-button">Capture</button>
+    </div>
+    <!-- Section for uploading images from the device -->
+    <div class="image-upload">
+      <!-- Label and input for uploading images -->
+      <label for="file-input">
+        <img src="camera.svg" alt="Upload Image">
+      </label>
+      <input id="file-input" type="file" accept="image/*" style="display: none;">
+    </div>
+    <!-- Section for displaying identified plant information -->
+    <div class="plant-info">
+      <h2>Identified Plant:</h2>
+      <p id="plant-name"></p>
+      <h2>Plant Care Information:</h2>
+      <ul id="plant-care-list">
+        <!-- List items for plant care details -->
+        <li>Sunlight: <span id="sunlight"></span></li>
+        <li>Watering: <span id="watering"></span></li>
+        <li>Soil: <span id="soil"></span></li>
+        <li>Pests: <span id="pests"></span></li>
+      </ul>
+    </div>
+    <div class="loading">
+      <div class="loader"></div>
+    </div>
+    <div class="error-message" role="alert" aria-live="assertive">
+      <p id="error-text"></p>
+    </div>
+    <!-- Footer section -->
+    <footer>
+      <p>&copy; 2025 Dream Nursery</p>
+    </footer>
+  </div>
+  <!-- Link to JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
