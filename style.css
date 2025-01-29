@@ -44,11 +44,18 @@ header {
   margin-bottom: 30px;
 }
 
-/* Set margin-bottom for the logo */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .logo {
   text-align: center;
   margin-bottom: 20px;
   max-width: 200px;
+  margin-right: 20px;
 }
 
 /* Set width and max-width for the logo image */
@@ -57,9 +64,24 @@ header {
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  max-width: 150px;
+  max-width: 100px;
   height: auto;
   object-fit: cover;
+}
+
+.title {
+  text-align: left;
+}
+
+.title h1 {
+  color: #4CAF50;
+  font-size: 2em;
+  margin: 0;
+}
+
+.title p {
+  margin: 5px 0 0;
+  color: #777;
 }
 
 /* Image Capture Styles */
@@ -222,6 +244,15 @@ footer {
     padding: 10px 20px;
     font-size: 14px;
   }
+
+  .header-content {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
 
 /* Set styles for screens with a maximum width of 480px */
@@ -232,7 +263,7 @@ footer {
   }
 
   .logo img {
-    max-width: 120px;
+    max-width: 80px;
   }
 
   .image-upload img {
