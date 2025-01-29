@@ -44,4 +44,8 @@ Develop a robust and user-friendly web application using UiPath 2025.0.157 Commu
 - User interface design and usability.
 - Workflow performance and efficiency.
 - Error handling and robustness.
+<<<<<<< HEAD
 - Code quality, readability, and maintainability.
+=======
+- Code quality, readability, and maintainability.
+>>>>>>> 8d5ba395d392dc47dd0a0b35fa72f9913f84ce90
