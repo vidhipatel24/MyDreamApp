@@ -8,6 +8,7 @@ const toggleCameraButton = document.getElementById('toggle-camera-button');
 const loadingIndicator = document.querySelector('.loading');
 const errorMessage = document.querySelector('.error-message');
 const errorText = document.getElementById('error-text');
+const displayedImage = document.getElementById('displayed-image');
 
 let currentStream;
 let useFrontCamera = true;
@@ -53,6 +54,16 @@ function handleFileInput() {
 
   // Get the selected file
   const file = fileInput.files[0];
+
+  // Display the uploaded image
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    displayedImage.src = e.target.result;
+    displayedImage.parentElement.style.display = 'block'; // Show the image display section
+    document.querySelector('.image-capture').style.display = 'none'; // Hide the image capture section
+    document.querySelector('.image-upload').style.display = 'none'; // Hide the image upload section
+  };
+  reader.readAsDataURL(file);
 
   // Create a new FormData object
   const formData = new FormData();
@@ -110,6 +121,12 @@ function handleCapture() {
   // Get the canvas data URL
   const dataURL = canvas.toDataURL('image/jpeg');
 
+  // Display the captured image
+  displayedImage.src = dataURL;
+  displayedImage.parentElement.style.display = 'block'; // Show the image display section
+  document.querySelector('.image-capture').style.display = 'none'; // Hide the image capture section
+  document.querySelector('.image-upload').style.display = 'none'; // Hide the image upload section
+
   // Send the data URL to the server
   fetch('/api/identify', {
     method: 'POST',
@@ -124,7 +141,12 @@ function handleCapture() {
 
     // Update the plant name and care list
     plantName.textContent = data.plantName;
-    // ... (rest of the code for updating UI with plant care information)
+    plantCareList.innerHTML = '';
+    data.careInformation.forEach(item => {
+      const listItem = document.createElement('li');
+      listItem.textContent = item;
+      plantCareList.appendChild(listItem);
+    });
   })
   .catch(error => {
     loadingIndicator.style.display = 'none'; // Hide loading indicator

@@ -10,7 +10,6 @@
 
 /* Set font family and font size for the body */
 body {
-  font-family: sans-serif;
   margin: 0;
   padding: 20px;
   display: flex;
@@ -40,7 +39,6 @@ body {
 
 /* Header Styles */
 header {
-  text-align: center;
   margin-bottom: 30px;
 }
 
@@ -52,21 +50,13 @@ header {
 }
 
 .logo {
-  text-align: center;
-  margin-bottom: 20px;
-  max-width: 200px;
   margin-right: 20px;
 }
 
 /* Set width and max-width for the logo image */
 .logo img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
   max-width: 100px;
   height: auto;
-  object-fit: cover;
 }
 
 .title {
@@ -82,6 +72,20 @@ header {
 .title p {
   margin: 5px 0 0;
   color: #777;
+}
+
+/* Image Display Styles */
+.image-display {
+  display: none;
+  margin-top: 20px;
+}
+
+.image-display img {
+  width: 320px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Image Capture Styles */
@@ -149,6 +153,7 @@ header {
 
 /* Set position, overflow, and border for the image upload container */
 .image-upload {
+  display: none;
   position: relative;
   overflow: hidden;
   border: 2px solid #ccc;
