@@ -1,4 +1,4 @@
-// Get elements
+// Get elements from the DOM
 const fileInput = document.getElementById('file-input');
 const plantName = document.getElementById('plant-name');
 const plantCareList = document.getElementById('plant-care-list');

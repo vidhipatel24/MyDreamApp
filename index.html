@@ -4,23 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dream Nursery - Plant Identifier</title>
+  <!-- Link to external CSS file -->
   <link rel="stylesheet" href="style.css">
+  <!-- Favicon for the website -->
   <link rel="icon" href="favicon.ico">
+  <!-- Link to Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <header>
       <div class="header-content">
+        <!-- Logo section -->
         <div class="logo">
           <img src="dreamlogo.png" alt="Dream Nursery Logo">
         </div>
+        <!-- Title and subtitle section -->
         <div class="title">
           <h1>Dream Nursery</h1>
           <p>Your Guide to Happy Plants</p>
         </div>
       </div>
     </header>
+    <!-- Video capture section -->
     <div class="image-capture">
       <div class="video-container">
         <video id="video" width="320" height="240" autoplay></video>
@@ -28,15 +34,18 @@
       <button id="capture-button" class="capture-button">Capture</button>
       <button id="toggle-camera-button" class="capture-button">Toggle Camera</button>
     </div>
+    <!-- Image display section -->
     <div class="image-display">
       <img id="displayed-image" src="" alt="Uploaded or Captured Image">
     </div>
+    <!-- Image upload section -->
     <div class="image-upload">
       <label for="file-input">
         <img src="camera.svg" alt="Upload Image">
       </label>
       <input id="file-input" type="file" accept="image/*" style="display: none;">
     </div>
+    <!-- Plant information section -->
     <div class="plant-info">
       <h2>Identified Plant:</h2>
       <p id="plant-name"></p>
@@ -48,16 +57,20 @@
         <li>Pests: <span id="pests"></span></li>
       </ul>
     </div>
+    <!-- Loading indicator -->
     <div class="loading">
       <div class="loader"></div>
     </div>
+    <!-- Error message section -->
     <div class="error-message" role="alert" aria-live="assertive">
       <p id="error-text"></p>
     </div>
+    <!-- Footer section -->
     <footer>
       <p>&copy; 2025 Dream Nursery. All rights reserved.</p>
     </footer>
   </div>
+  <!-- Link to external JavaScript file -->
   <script src="script.js"></script>
 </body>
 </html>
