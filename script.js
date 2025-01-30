@@ -4,47 +4,47 @@ const plantName = document.getElementById('plant-name');
 const plantCareList = document.getElementById('plant-care-list');
 const video = document.getElementById('video');
 const captureButton = document.getElementById('capture-button');
+const toggleCameraButton = document.getElementById('toggle-camera-button');
 const loadingIndicator = document.querySelector('.loading');
 const errorMessage = document.querySelector('.error-message');
 const errorText = document.getElementById('error-text');
 
+let currentStream;
+let useFrontCamera = true;
+
 // Add event listeners
 fileInput.addEventListener('change', handleFileInput);
 captureButton.addEventListener('click', handleCapture);
+toggleCameraButton.addEventListener('click', toggleCamera);
 
-// ... (camera access and capture logic) ...
-
-captureButton.addEventListener('click', () => {
-  loadingIndicator.style.display = 'block'; // Show loading indicator
-  errorMessage.style.display = 'none'; // Hide any previous error messages
-  
-  // ... (send image data to backend) ...
-
-  fetch('/api/identify', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ imageData: dataURL })
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
+// Function to start the camera
+function startCamera() {
+  const constraints = {
+    video: {
+      facingMode: useFrontCamera ? 'user' : 'environment'
     }
-    return response.json();
-})
-.then(data => {
-    loadingIndicator.style.display = 'none'; // Hide loading indicator
+  };
 
-    plantName.textContent = data.plantName;
-    // ... (update UI with plant care information) ...
-})
-.catch(error => {
-    loadingIndicator.style.display = 'none'; // Hide loading indicator
-    errorMessage.style.display = 'block';
-    errorText.textContent = 'Error identifying plant. Please try again.';
-});
-});
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then(stream => {
+      currentStream = stream;
+      video.srcObject = stream;
+    })
+    .catch(err => {
+      console.error('Error accessing camera:', err);
+      errorMessage.style.display = 'block';
+      errorText.textContent = 'Error accessing camera. Please check your device settings.';
+    });
+}
+
+// Function to toggle the camera
+function toggleCamera() {
+  useFrontCamera = !useFrontCamera;
+  if (currentStream) {
+    currentStream.getTracks().forEach(track => track.stop());
+  }
+  startCamera();
+}
 
 // Function to handle file input
 function handleFileInput() {
@@ -136,14 +136,5 @@ function handleCapture() {
   });
 }
 
-// Check for browser media device support
-navigator.mediaDevices.getUserMedia({ video: true })
-  .then(stream => {
-    // Set the video source object
-    video.srcObject = stream;
-  })
-  .catch(err => {
-    console.error('Error accessing camera:', err);
-    errorMessage.style.display = 'block';
-    errorText.textContent = 'Error accessing camera. Please check your device settings.';
-  });
+// Start the camera on page load
+startCamera();
